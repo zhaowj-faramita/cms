@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "cms_Test")
 public class CmsTest implements Serializable {
 	/**
-	 *
+	 *   sss
 	 */
 	private static final long serialVersionUID = 1152646010364597707L;
 	@Id
