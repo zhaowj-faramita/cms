@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class ForWardController {
-    @GetMapping("")
+    @GetMapping("url")
     public String testMapping(HttpServletRequest request) {
         return request.getParameter("id");
     }
