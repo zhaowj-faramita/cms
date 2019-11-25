@@ -1,5 +1,7 @@
 package com.briup.zhaowenjie.cms.config;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Date;
  * @author: charles
  * @create: 2019-03-13 21:01
  **/
-
+@Component
 public class MessageUtil {
     /**
      * 成功并返回数据实体类

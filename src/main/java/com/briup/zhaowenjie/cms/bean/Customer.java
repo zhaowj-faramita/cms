@@ -1,6 +1,7 @@
 package com.briup.zhaowenjie.cms.bean;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
@@ -14,8 +15,11 @@ import javax.persistence.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "用户的id")
     private int id;
+    @ApiModelProperty(value = "用户名")
     private String username;
+    @ApiModelProperty(value = "用户密码")
     private String password;
 
     public void setId(int id) {

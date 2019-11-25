@@ -1,6 +1,7 @@
 package com.briup.zhaowenjie.cms.bean;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,8 +16,11 @@ import java.io.Serializable;
 public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Category的id")
     private int id;
+    @ApiModelProperty(value = "Category的code")
     private long code;
+    @ApiModelProperty(value = "Category的name")
     private String name;
 
     public int getId() {

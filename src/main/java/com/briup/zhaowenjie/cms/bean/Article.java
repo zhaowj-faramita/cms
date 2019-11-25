@@ -1,6 +1,7 @@
 package com.briup.zhaowenjie.cms.bean;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,12 +17,19 @@ import java.sql.Date;
 public class Article implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "Article的id")
     private int id;
+    @ApiModelProperty(value = "作者")
     private String author;
+    @ApiModelProperty(value = "点击的时间")
     private int clickTimes;
+    @ApiModelProperty(value = "连接地址")
     private String content;
+    @ApiModelProperty(value = "上传的时间")
     private Date publishDate;
+    @ApiModelProperty(value = "主题")
     private String title;
+    @ApiModelProperty(value = "Article的category_id")
     private int category_id;
 
     public int getId() {
@@ -56,11 +64,11 @@ public class Article implements Serializable {
         this.content = content;
     }
 
-    public DatabaseMetaDatate getPublishDate() {
+    public Date getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(DatabaseMetaDatate publishDate) {
+    public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
 
