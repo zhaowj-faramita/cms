@@ -5,6 +5,10 @@ import io.swagger.annotations.ApiModel;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * cms_category对应pojo类
+ * @author darkStorm
+ */
 @Entity
 @Table(name = "cms_category")
 @ApiModel

@@ -5,6 +5,10 @@ import io.swagger.annotations.ApiModel;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * cms_link对应pojo类
+ * @author darkStorm
+ */
 @Entity
 @Table(name = "cms_link")
 @ApiModel

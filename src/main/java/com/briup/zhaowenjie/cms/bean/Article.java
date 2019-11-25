@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
+/**
+ * cms_article对应pojo类
+ * @author darkStorm
+ */
 @Entity
 @Table(name = "cms_article")
 @ApiModel

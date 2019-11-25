@@ -4,6 +4,10 @@ import io.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
 
+/**
+ * cms_customer对应pojo类
+ * @author darkStorm
+ */
 @Entity
 @Table(name = "cms_customer")
 @ApiModel
