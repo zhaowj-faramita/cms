@@ -34,7 +34,7 @@ public class CategoryController {
 
     @ApiOperation("删除一个栏目")
     @GetMapping("/remove")
-    @ApiImplicitParam(name = "id",value = "要删除的Category的主键",paramType = "query",required = true)
+    @ApiImplicitParam(name = "id",value = "要删除的栏目的主键",paramType = "query",required = true)
     public Message removeCategory(int id) {
         iCategoryService.removeCategory(id);
         return messageUtil.success();
@@ -42,7 +42,7 @@ public class CategoryController {
 
     @ApiOperation("根据主键查询栏目")
     @GetMapping("/queryById")
-    @ApiImplicitParam(name = "id", value = "要删除的用户的主键", paramType = "query", required = true)
+    @ApiImplicitParam(name = "id", value = "要查询的栏目的主键", paramType = "query", required = true)
     public Message<Category> queryCategoryById(int id) {
         return messageUtil.success(iCategoryService.queryCategoryById(id));
     }

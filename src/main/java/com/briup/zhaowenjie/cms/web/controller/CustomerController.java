@@ -42,7 +42,7 @@ public class CustomerController {
 
     @ApiOperation("根据主键查询用户")
     @GetMapping("/queryById")
-    @ApiImplicitParam(name = "id", value = "要删除的用户的主键", paramType = "query", required = true)
+    @ApiImplicitParam(name = "id", value = "要查询的用户的主键", paramType = "query", required = true)
     public Message<Customer> queryCustomerById(int id) {
         return messageUtil.success(iCustomerService.queryCustomerById(id));
     }

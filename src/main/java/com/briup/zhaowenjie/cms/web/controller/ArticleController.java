@@ -42,14 +42,14 @@ public class ArticleController {
         return messageUtil.success();
     }
 
-    @ApiOperation("根据主键查询用户")
+    @ApiOperation("根据主键查询Article")
     @GetMapping("/queryById")
-    @ApiImplicitParam(name = "id", value = "要删除的用户的主键", paramType = "query", required = true)
+    @ApiImplicitParam(name = "id", value = "要删除的Article的主键", paramType = "query", required = true)
     public Message<Article> queryArticleById(int id) {
         return messageUtil.success(iArticleService.queryArticleById(id));
     }
 
-    @ApiOperation("查询所有用户")
+    @ApiOperation("查询所有Article")
     @GetMapping("/findAll")
     public Message<List<Article>> findAllArticle() {
         return messageUtil.success(iArticleService.findAll());

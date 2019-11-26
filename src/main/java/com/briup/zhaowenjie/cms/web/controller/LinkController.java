@@ -42,7 +42,7 @@ public class LinkController {
 
     @ApiOperation("根据主键查询所有链接")
     @GetMapping("/queryById")
-    @ApiImplicitParam(name = "id", value = "要删除的链接的主键", paramType = "query", required = true)
+    @ApiImplicitParam(name = "id", value = "要查询的链接的主键", paramType = "query", required = true)
     public Message<Link> queryLinkById(int id) {
         return messageUtil.success(linkService.queryLinkById(id));
     }
