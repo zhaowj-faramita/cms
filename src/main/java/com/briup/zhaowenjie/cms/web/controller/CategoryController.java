@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/category")
-@Api(description = "Category处理器")
+@Api(description = "栏目处理器")
 public class CategoryController {
 
     @Autowired
@@ -25,29 +25,29 @@ public class CategoryController {
     @Autowired
     private MessageUtil messageUtil;
 
-    @ApiOperation("添加一个Category或者修改一个已有的Category")
+    @ApiOperation("添加一个栏目或者修改一个已有的栏目")
     @PostMapping("/addOrUpdate")
-    public Message<Category> addCategory(Category category) {
-        Category category1 = iCategoryService.addCategory(category);
-        return messageUtil.success(category1);
+    public Message addCategory(Category category) {
+        iCategoryService.addCategory(category);
+        return messageUtil.success();
     }
 
-    @ApiOperation("删除一个Category")
+    @ApiOperation("删除一个栏目")
     @GetMapping("/remove")
     @ApiImplicitParam(name = "id",value = "要删除的Category的主键",paramType = "query",required = true)
-    public Message<Category> removeCategory(int id) {
+    public Message removeCategory(int id) {
         iCategoryService.removeCategory(id);
         return messageUtil.success();
     }
 
-    @ApiOperation("根据主键查询Category")
+    @ApiOperation("根据主键查询栏目")
     @GetMapping("/queryById")
     @ApiImplicitParam(name = "id", value = "要删除的用户的主键", paramType = "query", required = true)
     public Message<Category> queryCategoryById(int id) {
         return messageUtil.success(iCategoryService.queryCategoryById(id));
     }
 
-    @ApiOperation("查询所有Category")
+    @ApiOperation("查询所有栏目")
     @GetMapping("/findAll")
     public Message<List<Category>> findAllCategory() {
         return messageUtil.success(iCategoryService.findAll());

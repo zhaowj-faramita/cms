@@ -27,15 +27,15 @@ public class LinkController {
 
     @ApiOperation("添加新的链接或者修改一个已有的链接")
     @PostMapping("/addOrUpdate")
-    public Message<Link> addLink(Link link) {
-        Link link1 = linkService.addLink(link);
-        return messageUtil.success(link1);
+    public Message addLink(Link link) {
+        linkService.addLink(link);
+        return messageUtil.success();
     }
 
     @ApiOperation("删除一个链接")
     @GetMapping("/remove")
     @ApiImplicitParam(name = "id", value = "要删除的链接的主键", paramType = "query", required = true)
-    public Message<Link> removeLink(int id) {
+    public Message removeLink(int id) {
         linkService.removeLink(id);
         return messageUtil.success();
     }

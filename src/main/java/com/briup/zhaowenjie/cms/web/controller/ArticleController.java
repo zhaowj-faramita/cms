@@ -29,15 +29,15 @@ public class ArticleController {
 
     @ApiOperation("添加一个Article或者修改一个已有的Article")
     @PostMapping("/addOrUpdate")
-    public Message<Article> addArticle(Article article) {
-        Article category1 = iArticleService.addArticle(article);
-        return messageUtil.success(category1);
+    public Message addArticle(Article article) {
+        iArticleService.addArticle(article);
+        return messageUtil.success();
     }
 
     @ApiOperation("删除一个Article")
     @GetMapping("/remove")
     @ApiImplicitParam(name = "id",value = "要删除的Article的主键",paramType = "query",required = true)
-    public Message<Article> removeArticle(int id) {
+    public Message removeArticle(int id) {
         iArticleService.removeArticle(id);
         return messageUtil.success();
     }

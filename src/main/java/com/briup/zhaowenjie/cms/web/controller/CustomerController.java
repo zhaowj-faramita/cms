@@ -27,15 +27,15 @@ public class CustomerController {
 
     @ApiOperation("添加新的用户或者修改一个已有的用户")
     @PostMapping("/addOrUpdate")
-    public Message<Customer> addCustomer(Customer customer) {
-        Customer customer1 = iCustomerService.addCustomer(customer);
-        return messageUtil.success(customer1);
+    public Message addCustomer(Customer customer) {
+        iCustomerService.addCustomer(customer);
+        return messageUtil.success();
     }
 
     @ApiOperation("删除一个用户")
     @GetMapping("/remove")
     @ApiImplicitParam(name = "id",value = "要删除的用户的主键",paramType = "query",required = true)
-    public Message<Customer> removeCustomer(int id) {
+    public Message removeCustomer(int id) {
         iCustomerService.removeCustomer(id);
         return messageUtil.success();
     }

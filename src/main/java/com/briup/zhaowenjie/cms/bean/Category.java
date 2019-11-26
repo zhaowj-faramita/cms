@@ -16,11 +16,11 @@ import java.io.Serializable;
 public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "Category的id")
+    @ApiModelProperty(value = "栏目的id")
     private int id;
-    @ApiModelProperty(value = "Category的code")
+    @ApiModelProperty(value = "栏目的code")
     private long code;
-    @ApiModelProperty(value = "Category的name")
+    @ApiModelProperty(value = "栏目的name")
     private String name;
 
     public int getId() {
