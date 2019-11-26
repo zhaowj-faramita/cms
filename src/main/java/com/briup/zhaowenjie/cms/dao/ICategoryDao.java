@@ -5,6 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface ICategoryDao extends JpaRepository<Category,Integer> {
-    @Transactional
-    void deleteByName(String name);
+    Category findById(int id);
 }

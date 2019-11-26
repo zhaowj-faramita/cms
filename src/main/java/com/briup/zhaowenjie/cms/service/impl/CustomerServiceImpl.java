@@ -8,6 +8,8 @@ import com.briup.zhaowenjie.cms.util.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerServiceImpl implements ICustomerService {
 
@@ -24,11 +26,17 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public void removeCustomer(String name) throws CustomerException {
-        if (name == null) {
-            throw new CustomerException(CodeUtil.DEADLY_CODE, "removeCustomer:参数为空");
-        } else {
-            iCustomerDao.deleteByUsername(name);
-        }
+    public void removeCustomer(int id) throws CustomerException {
+            iCustomerDao.deleteById(id);
+    }
+
+    @Override
+    public Customer queryCustomerById(int id) throws CustomerException {
+        return iCustomerDao.findById(id);
+    }
+
+    @Override
+    public List<Customer> findAll() throws CustomerException {
+        return iCustomerDao.findAll();
     }
 }

@@ -8,6 +8,8 @@ import com.briup.zhaowenjie.cms.util.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ArticleServiceImpl implements IArticleService {
 
@@ -24,11 +26,17 @@ public class ArticleServiceImpl implements IArticleService {
     }
 
     @Override
-    public void removeArticle(String author) throws CustomerException {
-        if (author == null) {
-            throw new CustomerException(CodeUtil.DEADLY_CODE, "removeArticle:参数为空");
-        } else {
-            articleDao.deleteByAuthor(author);
-        }
+    public void removeArticle(int id) throws CustomerException {
+            articleDao.deleteById(id);
+    }
+
+    @Override
+    public Article queryArticleById(int id) throws CustomerException {
+        return articleDao.findById(id);
+    }
+
+    @Override
+    public List<Article> findAll() throws CustomerException {
+        return articleDao.findAll();
     }
 }

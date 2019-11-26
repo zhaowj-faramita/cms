@@ -9,8 +9,11 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
@@ -22,8 +25,8 @@ public class CustomerController {
     @Autowired
     private MessageUtil messageUtil;
 
-    @ApiOperation("添加新的用户")
-    @GetMapping("/add")
+    @ApiOperation("添加新的用户或者修改一个已有的用户")
+    @PostMapping("/addOrUpdate")
     public Message<Customer> addCustomer(Customer customer) {
         Customer customer1 = iCustomerService.addCustomer(customer);
         return messageUtil.success(customer1);
@@ -31,18 +34,23 @@ public class CustomerController {
 
     @ApiOperation("删除一个用户")
     @GetMapping("/remove")
-    @ApiImplicitParam(name = "username",value = "要删除的用户的用户名",paramType = "query")
-    public Message<Customer> removeCustomer(String username) {
-        iCustomerService.removeCustomer(username);
+    @ApiImplicitParam(name = "id",value = "要删除的用户的主键",paramType = "query",required = true)
+    public Message<Customer> removeCustomer(int id) {
+        iCustomerService.removeCustomer(id);
         return messageUtil.success();
     }
 
-    @ApiOperation("修改已有的用户")
-    @GetMapping("/reset")
-    public Message<Customer> resetCustomer(Customer customer) {
-        iCustomerService.removeCustomer(customer.getUsername());
-        Customer customer1 = iCustomerService.addCustomer(customer);
-        return messageUtil.success(customer1);
+    @ApiOperation("根据主键查询用户")
+    @GetMapping("/queryById")
+    @ApiImplicitParam(name = "id", value = "要删除的用户的主键", paramType = "query", required = true)
+    public Message<Customer> queryCustomerById(int id) {
+        return messageUtil.success(iCustomerService.queryCustomerById(id));
+    }
+
+    @ApiOperation("查询所有用户")
+    @GetMapping("/findAll")
+    public Message<List<Customer>> findAllCustomer() {
+        return messageUtil.success(iCustomerService.findAll());
     }
 
 }

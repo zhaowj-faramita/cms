@@ -9,8 +9,11 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/category")
@@ -22,8 +25,8 @@ public class CategoryController {
     @Autowired
     private MessageUtil messageUtil;
 
-    @ApiOperation("添加一个Category")
-    @GetMapping("/add")
+    @ApiOperation("添加一个Category或者修改一个已有的Category")
+    @PostMapping("/addOrUpdate")
     public Message<Category> addCategory(Category category) {
         Category category1 = iCategoryService.addCategory(category);
         return messageUtil.success(category1);
@@ -31,18 +34,24 @@ public class CategoryController {
 
     @ApiOperation("删除一个Category")
     @GetMapping("/remove")
-    @ApiImplicitParam(name = "name",value = "要删除的Category的name",paramType = "query")
-    public Message<Category> removeCategory(String name) {
-        iCategoryService.removeCategory(name);
+    @ApiImplicitParam(name = "id",value = "要删除的Category的主键",paramType = "query",required = true)
+    public Message<Category> removeCategory(int id) {
+        iCategoryService.removeCategory(id);
         return messageUtil.success();
     }
 
-    @ApiOperation("修改已有的Category")
-    @GetMapping("/reset")
-    public Message<Category> resetCategory(Category category) {
-        iCategoryService.removeCategory(category.getName());
-        Category category1 = iCategoryService.addCategory(category);
-        return messageUtil.success(category1);
+    @ApiOperation("根据主键查询Category")
+    @GetMapping("/queryById")
+    @ApiImplicitParam(name = "id", value = "要删除的用户的主键", paramType = "query", required = true)
+    public Message<Category> queryCategoryById(int id) {
+        return messageUtil.success(iCategoryService.queryCategoryById(id));
     }
+
+    @ApiOperation("查询所有Category")
+    @GetMapping("/findAll")
+    public Message<List<Category>> findAllCategory() {
+        return messageUtil.success(iCategoryService.findAll());
+    }
+
 
 }

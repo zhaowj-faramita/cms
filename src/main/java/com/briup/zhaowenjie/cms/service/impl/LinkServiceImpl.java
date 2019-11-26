@@ -8,6 +8,8 @@ import com.briup.zhaowenjie.cms.util.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LinkServiceImpl implements ILinkService {
 
@@ -24,12 +26,17 @@ public class LinkServiceImpl implements ILinkService {
     }
 
     @Override
-    public void removeLink(String name) throws CustomerException {
-        if (name == null) {
-            throw new CustomerException(CodeUtil.DEADLY_CODE, "removeLink:参数为空");
-        } else {
-            linkDao.deleteByName(name);
-        }
+    public void removeLink(int id) throws CustomerException {
+        linkDao.deleteById(id);
     }
 
+    @Override
+    public Link queryLinkById(int id) throws CustomerException {
+        return linkDao.findById(id);
+    }
+
+    @Override
+    public List<Link> findAll() throws CustomerException {
+        return linkDao.findAll();
+    }
 }

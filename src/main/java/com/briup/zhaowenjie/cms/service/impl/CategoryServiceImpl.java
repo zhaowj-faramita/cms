@@ -8,6 +8,8 @@ import com.briup.zhaowenjie.cms.util.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryServiceImpl implements ICategoryService {
 
@@ -24,11 +26,17 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
     @Override
-    public void removeCategory(String name) throws CustomerException {
-        if (name == null) {
-            throw new CustomerException(CodeUtil.DEADLY_CODE, "removeCategory:参数为空");
-        } else {
-            iCategoryDao.deleteByName(name);
-        }
+    public void removeCategory(int id) throws CustomerException {
+            iCategoryDao.deleteById(id);
+    }
+
+    @Override
+    public Category queryCategoryById(int id) throws CustomerException {
+        return iCategoryDao.findById(id);
+    }
+
+    @Override
+    public List<Category> findAll() throws CustomerException {
+        return iCategoryDao.findAll();
     }
 }

@@ -5,6 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface ICustomerDao extends JpaRepository<Customer,Integer> {
-    @Transactional
-    void deleteByUsername(String username);
+    Customer findById(int id);
 }

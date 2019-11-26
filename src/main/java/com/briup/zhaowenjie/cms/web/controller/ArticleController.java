@@ -11,8 +11,11 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/article")
@@ -24,8 +27,8 @@ public class ArticleController {
     @Autowired
     private MessageUtil messageUtil;
 
-    @ApiOperation("添加一个Article")
-    @GetMapping("/add")
+    @ApiOperation("添加一个Article或者修改一个已有的Article")
+    @PostMapping("/addOrUpdate")
     public Message<Article> addArticle(Article article) {
         Article category1 = iArticleService.addArticle(article);
         return messageUtil.success(category1);
@@ -33,18 +36,22 @@ public class ArticleController {
 
     @ApiOperation("删除一个Article")
     @GetMapping("/remove")
-    @ApiImplicitParam(name = "author",value = "要删除的Article的author",paramType = "query")
-    public Message<Article> removeArticle(String author) {
-        iArticleService.removeArticle(author);
+    @ApiImplicitParam(name = "id",value = "要删除的Article的主键",paramType = "query",required = true)
+    public Message<Article> removeArticle(int id) {
+        iArticleService.removeArticle(id);
         return messageUtil.success();
     }
 
-    @ApiOperation("修改已有的Article")
-    @GetMapping("/reset")
-    public Message<Article> resetArticle(Article article) {
-        iArticleService.removeArticle(article.getAuthor());
-        Article article1 = iArticleService.addArticle(article);
-        return messageUtil.success(article1);
+    @ApiOperation("根据主键查询用户")
+    @GetMapping("/queryById")
+    @ApiImplicitParam(name = "id", value = "要删除的用户的主键", paramType = "query", required = true)
+    public Message<Article> queryArticleById(int id) {
+        return messageUtil.success(iArticleService.queryArticleById(id));
     }
 
+    @ApiOperation("查询所有用户")
+    @GetMapping("/findAll")
+    public Message<List<Article>> findAllArticle() {
+        return messageUtil.success(iArticleService.findAll());
+    }
 }

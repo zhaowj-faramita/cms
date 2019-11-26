@@ -5,6 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface ILinkDao extends JpaRepository<Link,Integer> {
-    @Transactional
-    void deleteByName(String name);
+    Link findById(int id);
 }

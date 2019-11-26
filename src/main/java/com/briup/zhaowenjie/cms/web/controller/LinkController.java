@@ -9,8 +9,11 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/link")
@@ -22,8 +25,8 @@ public class LinkController {
     @Autowired
     private MessageUtil messageUtil;
 
-    @ApiOperation("添加新的链接")
-    @GetMapping("/add")
+    @ApiOperation("添加新的链接或者修改一个已有的链接")
+    @PostMapping("/addOrUpdate")
     public Message<Link> addLink(Link link) {
         Link link1 = linkService.addLink(link);
         return messageUtil.success(link1);
@@ -31,18 +34,23 @@ public class LinkController {
 
     @ApiOperation("删除一个链接")
     @GetMapping("/remove")
-    @ApiImplicitParam(name = "name",value = "要删除的链接的链接名",paramType = "query")
-    public Message<Link> removeLink(String name) {
-        linkService.removeLink(name);
+    @ApiImplicitParam(name = "id", value = "要删除的链接的主键", paramType = "query", required = true)
+    public Message<Link> removeLink(int id) {
+        linkService.removeLink(id);
         return messageUtil.success();
     }
 
-    @ApiOperation("修改已有的链接")
-    @GetMapping("/reset")
-    public Message<Link> resetLink(Link link) {
-        linkService.removeLink(link.getName());
-        Link link1 = linkService.addLink(link);
-        return messageUtil.success(link1);
+    @ApiOperation("根据主键查询所有链接")
+    @GetMapping("/queryById")
+    @ApiImplicitParam(name = "id", value = "要删除的链接的主键", paramType = "query", required = true)
+    public Message<Link> queryLinkById(int id) {
+        return messageUtil.success(linkService.queryLinkById(id));
+    }
+
+    @ApiOperation("查询所有链接")
+    @GetMapping("/findAll")
+    public Message<List<Link>> findAllLink() {
+        return messageUtil.success(linkService.findAll());
     }
 
 }
