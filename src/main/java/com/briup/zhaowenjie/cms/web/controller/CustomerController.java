@@ -22,14 +22,12 @@ public class CustomerController {
 
     @Autowired
     private ICustomerService iCustomerService;
-    @Autowired
-    private MessageUtil messageUtil;
 
     @ApiOperation("添加新的用户或者修改一个已有的用户")
     @PostMapping("/addOrUpdate")
     public Message addCustomer(Customer customer) {
         iCustomerService.addCustomer(customer);
-        return messageUtil.success();
+        return MessageUtil.success();
     }
 
     @ApiOperation("删除一个用户")
@@ -37,20 +35,20 @@ public class CustomerController {
     @ApiImplicitParam(name = "id",value = "要删除的用户的主键",paramType = "query",required = true)
     public Message removeCustomer(int id) {
         iCustomerService.removeCustomer(id);
-        return messageUtil.success();
+        return MessageUtil.success();
     }
 
     @ApiOperation("根据主键查询用户")
     @GetMapping("/queryById")
     @ApiImplicitParam(name = "id", value = "要查询的用户的主键", paramType = "query", required = true)
     public Message<Customer> queryCustomerById(int id) {
-        return messageUtil.success(iCustomerService.queryCustomerById(id));
+        return MessageUtil.success(iCustomerService.queryCustomerById(id));
     }
 
     @ApiOperation("查询所有用户")
     @GetMapping("/findAll")
     public Message<List<Customer>> findAllCustomer() {
-        return messageUtil.success(iCustomerService.findAll());
+        return MessageUtil.success(iCustomerService.findAll());
     }
 
 }

@@ -22,14 +22,12 @@ public class LinkController {
 
     @Autowired
     private ILinkService linkService;
-    @Autowired
-    private MessageUtil messageUtil;
 
     @ApiOperation("添加新的链接或者修改一个已有的链接")
     @PostMapping("/addOrUpdate")
     public Message addLink(Link link) {
         linkService.addLink(link);
-        return messageUtil.success();
+        return MessageUtil.success();
     }
 
     @ApiOperation("删除一个链接")
@@ -37,20 +35,20 @@ public class LinkController {
     @ApiImplicitParam(name = "id", value = "要删除的链接的主键", paramType = "query", required = true)
     public Message removeLink(int id) {
         linkService.removeLink(id);
-        return messageUtil.success();
+        return MessageUtil.success();
     }
 
     @ApiOperation("根据主键查询所有链接")
     @GetMapping("/queryById")
     @ApiImplicitParam(name = "id", value = "要查询的链接的主键", paramType = "query", required = true)
     public Message<Link> queryLinkById(int id) {
-        return messageUtil.success(linkService.queryLinkById(id));
+        return MessageUtil.success(linkService.queryLinkById(id));
     }
 
     @ApiOperation("查询所有链接")
     @GetMapping("/findAll")
     public Message<List<Link>> findAllLink() {
-        return messageUtil.success(linkService.findAll());
+        return MessageUtil.success(linkService.findAll());
     }
 
 }

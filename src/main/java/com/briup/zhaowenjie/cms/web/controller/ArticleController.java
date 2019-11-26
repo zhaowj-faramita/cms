@@ -24,14 +24,13 @@ public class ArticleController {
 
     @Autowired
     private IArticleService iArticleService;
-    @Autowired
-    private MessageUtil messageUtil;
+
 
     @ApiOperation("添加一个Article或者修改一个已有的Article")
     @PostMapping("/addOrUpdate")
     public Message addArticle(Article article) {
         iArticleService.addArticle(article);
-        return messageUtil.success();
+        return MessageUtil.success();
     }
 
     @ApiOperation("删除一个Article")
@@ -39,19 +38,19 @@ public class ArticleController {
     @ApiImplicitParam(name = "id",value = "要删除的Article的主键",paramType = "query",required = true)
     public Message removeArticle(int id) {
         iArticleService.removeArticle(id);
-        return messageUtil.success();
+        return MessageUtil.success();
     }
 
     @ApiOperation("根据主键查询Article")
     @GetMapping("/queryById")
     @ApiImplicitParam(name = "id", value = "要删除的Article的主键", paramType = "query", required = true)
     public Message<Article> queryArticleById(int id) {
-        return messageUtil.success(iArticleService.queryArticleById(id));
+        return MessageUtil.success(iArticleService.queryArticleById(id));
     }
 
     @ApiOperation("查询所有Article")
     @GetMapping("/findAll")
     public Message<List<Article>> findAllArticle() {
-        return messageUtil.success(iArticleService.findAll());
+        return MessageUtil.success(iArticleService.findAll());
     }
 }

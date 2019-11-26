@@ -22,14 +22,13 @@ public class CategoryController {
 
     @Autowired
     private ICategoryService iCategoryService;
-    @Autowired
-    private MessageUtil messageUtil;
+
 
     @ApiOperation("添加一个栏目或者修改一个已有的栏目")
     @PostMapping("/addOrUpdate")
     public Message addCategory(Category category) {
         iCategoryService.addCategory(category);
-        return messageUtil.success();
+        return MessageUtil.success();
     }
 
     @ApiOperation("删除一个栏目")
@@ -37,20 +36,20 @@ public class CategoryController {
     @ApiImplicitParam(name = "id",value = "要删除的栏目的主键",paramType = "query",required = true)
     public Message removeCategory(int id) {
         iCategoryService.removeCategory(id);
-        return messageUtil.success();
+        return MessageUtil.success();
     }
 
     @ApiOperation("根据主键查询栏目")
     @GetMapping("/queryById")
     @ApiImplicitParam(name = "id", value = "要查询的栏目的主键", paramType = "query", required = true)
     public Message<Category> queryCategoryById(int id) {
-        return messageUtil.success(iCategoryService.queryCategoryById(id));
+        return MessageUtil.success(iCategoryService.queryCategoryById(id));
     }
 
     @ApiOperation("查询所有栏目")
     @GetMapping("/findAll")
     public Message<List<Category>> findAllCategory() {
-        return messageUtil.success(iCategoryService.findAll());
+        return MessageUtil.success(iCategoryService.findAll());
     }
 
 
