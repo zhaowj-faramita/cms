@@ -3,9 +3,10 @@ package com.briup.zhaowenjie.cms.bean;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * cms_article对应pojo类
@@ -19,18 +20,20 @@ public class Article implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "Article的id")
     private int id;
-    @ApiModelProperty(value = "作者")
+    @ApiModelProperty(value = "作者",required = true)
     private String author;
-    @ApiModelProperty(value = "点击的时间")
+    @ApiModelProperty(value = "点击的次数",hidden = true)
     private int clickTimes;
-    @ApiModelProperty(value = "连接地址")
+    @ApiModelProperty(value = "连接地址",required = true)
     private String content;
-    @ApiModelProperty(value = "上传的时间")
+    @ApiModelProperty(value = "发布的时间",hidden = true)
     private Date publishDate;
     @ApiModelProperty(value = "主题")
     private String title;
-    @ApiModelProperty(value = "Article的category_id")
-    private int category_id;
+    @ApiModelProperty(value = "对应的栏目")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public int getId() {
         return id;
@@ -80,12 +83,12 @@ public class Article implements Serializable {
         this.title = title;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
@@ -97,7 +100,7 @@ public class Article implements Serializable {
                 ", content='" + content + '\'' +
                 ", publishDate=" + publishDate +
                 ", title='" + title + '\'' +
-                ", category_id=" + category_id +
+                ", category=" + category +
                 '}';
     }
 }

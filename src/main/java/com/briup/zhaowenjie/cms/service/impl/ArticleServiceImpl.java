@@ -8,6 +8,7 @@ import com.briup.zhaowenjie.cms.util.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,6 +22,9 @@ public class ArticleServiceImpl implements IArticleService {
         if (article == null) {
             throw new CustomerException(CodeUtil.DEADLY_CODE, "addArticle:参数为空");
         } else {
+            article.setClickTimes(1);
+            article.setPublishDate(new Date());
+            System.out.println(article);
             return articleDao.save(article);
         }
     }

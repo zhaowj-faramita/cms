@@ -26,7 +26,7 @@ public class ArticleController {
     private IArticleService iArticleService;
 
 
-    @ApiOperation("添加一个Article或者修改一个已有的Article")
+    @ApiOperation(value = "添加一个Article或者修改一个已有的Article",notes = "category_ID以外不需要输入")
     @PostMapping("/addOrUpdate")
     public Message addArticle(Article article) {
         iArticleService.addArticle(article);
