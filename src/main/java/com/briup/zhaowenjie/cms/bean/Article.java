@@ -31,7 +31,7 @@ public class Article implements Serializable {
     @ApiModelProperty(value = "主题")
     private String title;
     @ApiModelProperty(value = "对应的栏目")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
@@ -90,6 +90,11 @@ public class Article implements Serializable {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
 
     @Override
     public String toString() {

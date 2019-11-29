@@ -14,4 +14,6 @@ public interface IArticleService {
     Article queryArticleById(int id) throws CustomerException;
 
     List<Article> findAll() throws CustomerException;
+
+    List<Article> findArticleByCategoryId(int category_id);
 }

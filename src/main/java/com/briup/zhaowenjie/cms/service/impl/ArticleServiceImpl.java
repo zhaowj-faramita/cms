@@ -36,11 +36,16 @@ public class ArticleServiceImpl implements IArticleService {
 
     @Override
     public Article queryArticleById(int id) throws CustomerException {
-        return articleDao.findById(id);
+        return articleDao.queryById(id);
     }
 
     @Override
     public List<Article> findAll() throws CustomerException {
         return articleDao.findAll();
+    }
+
+    @Override
+    public List<Article> findArticleByCategoryId(int category_id) {
+        return articleDao.queryByCategory_id(category_id);
     }
 }
