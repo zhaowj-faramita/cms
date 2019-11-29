@@ -4,7 +4,7 @@ import com.briup.zhaowenjie.cms.bean.Link;
 import com.briup.zhaowenjie.cms.dao.ILinkDao;
 import com.briup.zhaowenjie.cms.exception.CustomerException;
 import com.briup.zhaowenjie.cms.service.ILinkService;
-import com.briup.zhaowenjie.cms.util.CodeUtil;
+import com.briup.zhaowenjie.cms.utils.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +37,8 @@ public class LinkServiceImpl implements ILinkService {
 
     @Override
     public List<Link> findAll() throws CustomerException {
+
+
         return linkDao.findAll();
     }
 }

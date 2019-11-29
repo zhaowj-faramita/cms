@@ -1,10 +1,12 @@
 package com.briup.zhaowenjie.cms.service.impl;
 
 import com.briup.zhaowenjie.cms.bean.Category;
+import com.briup.zhaowenjie.cms.bean.ex.CategoryEX;
 import com.briup.zhaowenjie.cms.dao.ICategoryDao;
+import com.briup.zhaowenjie.cms.dao.ex.ICategoryEXDao;
 import com.briup.zhaowenjie.cms.exception.CustomerException;
 import com.briup.zhaowenjie.cms.service.ICategoryService;
-import com.briup.zhaowenjie.cms.util.CodeUtil;
+import com.briup.zhaowenjie.cms.utils.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Autowired
     private ICategoryDao iCategoryDao;
+
+    @Autowired
+    private ICategoryEXDao iCategoryEXDao;
 
     @Override
     public Category addCategory(Category category) throws CustomerException {
@@ -38,5 +43,10 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     public List<Category> findAll() throws CustomerException {
         return iCategoryDao.findAll();
+    }
+
+    @Override
+    public List<CategoryEX> findAllCategoryEX() throws CustomerException {
+         return iCategoryEXDao.findAll();
     }
 }

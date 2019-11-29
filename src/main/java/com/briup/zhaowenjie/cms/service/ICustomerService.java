@@ -15,4 +15,6 @@ public interface ICustomerService {
     Customer queryCustomerById(int id) throws CustomerException;
 
     List<Customer> findAll() throws CustomerException;
+
+    Customer queryCustomerByUsername(String username)throws CustomerException;
 }

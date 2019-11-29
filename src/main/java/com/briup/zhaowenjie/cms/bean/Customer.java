@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * cms_customer对应pojo类
@@ -12,7 +13,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cms_customer")
 @ApiModel
-public class Customer {
+public class Customer implements Serializable {
+    private static final long serialVersionUID = 9066699412634248871L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "用户的id")

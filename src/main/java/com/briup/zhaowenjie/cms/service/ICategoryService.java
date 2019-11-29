@@ -1,6 +1,7 @@
 package com.briup.zhaowenjie.cms.service;
 
 import com.briup.zhaowenjie.cms.bean.Category;
+import com.briup.zhaowenjie.cms.bean.ex.CategoryEX;
 import com.briup.zhaowenjie.cms.exception.CustomerException;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface ICategoryService {
     Category queryCategoryById(int id) throws CustomerException;
 
     List<Category> findAll() throws CustomerException;
+
+    List<CategoryEX> findAllCategoryEX() throws CustomerException;
 }

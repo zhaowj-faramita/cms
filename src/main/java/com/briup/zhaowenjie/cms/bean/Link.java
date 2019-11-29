@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Table(name = "cms_link")
 @ApiModel
 public class Link implements Serializable {
+    private static final long serialVersionUID = 6043386062886310010L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "链接的id值")

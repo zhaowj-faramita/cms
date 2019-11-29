@@ -4,7 +4,7 @@ import com.briup.zhaowenjie.cms.bean.Customer;
 import com.briup.zhaowenjie.cms.dao.ICustomerDao;
 import com.briup.zhaowenjie.cms.exception.CustomerException;
 import com.briup.zhaowenjie.cms.service.ICustomerService;
-import com.briup.zhaowenjie.cms.util.CodeUtil;
+import com.briup.zhaowenjie.cms.utils.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +38,10 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public List<Customer> findAll() throws CustomerException {
         return iCustomerDao.findAll();
+    }
+
+    @Override
+    public Customer queryCustomerByUsername(String username) throws CustomerException {
+        return iCustomerDao.findByUsername(username);
     }
 }

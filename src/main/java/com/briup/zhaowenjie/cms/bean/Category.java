@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Table(name = "cms_category")
 @ApiModel
 public class Category implements Serializable {
+    private static final long serialVersionUID = -1440805962348527136L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "栏目的id")
@@ -22,6 +23,7 @@ public class Category implements Serializable {
     private long code;
     @ApiModelProperty(value = "栏目的name")
     private String name;
+
 
     public int getId() {
         return id;

@@ -4,7 +4,7 @@ import com.briup.zhaowenjie.cms.bean.Article;
 import com.briup.zhaowenjie.cms.dao.IArticleDao;
 import com.briup.zhaowenjie.cms.exception.CustomerException;
 import com.briup.zhaowenjie.cms.service.IArticleService;
-import com.briup.zhaowenjie.cms.util.CodeUtil;
+import com.briup.zhaowenjie.cms.utils.CodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

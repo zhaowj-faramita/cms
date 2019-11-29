@@ -3,7 +3,6 @@ package com.briup.zhaowenjie.cms.bean;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,6 +15,7 @@ import java.util.Date;
 @Table(name = "cms_article")
 @ApiModel
 public class Article implements Serializable {
+    private static final long serialVersionUID = 3290284276016220724L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "Article的id")
