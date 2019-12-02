@@ -57,5 +57,6 @@ public class ArticleController {
     @ApiImplicitParam(name = "category_id", value = "要查找的文章的主键", paramType = "query", required = true)
     public Message<List<Article>> findAllArticle(int category_id) {
         return MessageUtil.success(iArticleService.findArticleByCategoryId(category_id));
+
     }
 }

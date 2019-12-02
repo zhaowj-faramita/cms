@@ -16,16 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/**
- * ClassName:WebSecurityConfig <br/>
- * Function: security 配置类 <br/>
- * Date: 2018年9月17日 上午10:23:44 <br/>
- *
- * @author wangzh
- * @version
- * @since JDK 1.8
- * @see
- */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -77,7 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/configuration/security",
                         "/swagger-ui.html/**",
                         "/webjars/**",
-                        "/index/**"
+                        "/index/**",
+                        "/customer/addOrUpdate"
                 ).permitAll()
                 .anyRequest().authenticated();
 

@@ -4,12 +4,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-/**
- * @program: app01
- * @description: 消息工具
- * @author: charles
- * @create: 2019-03-13 21:01
- **/
 @Component
 public class MessageUtil {
     /**

@@ -19,9 +19,9 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "用户的id")
     private int id;
-    @ApiModelProperty(value = "用户名")
+    @ApiModelProperty(value = "用户名",required = true)
     private String username;
-    @ApiModelProperty(value = "用户密码")
+    @ApiModelProperty(value = "用户密码",required = true)
     private String password;
 
     public void setId(int id) {
