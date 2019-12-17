@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -57,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 // 设置允许访问的资源
-                .antMatchers("/user/login","/user/form").permitAll()
+                .antMatchers("/user/login","/user/form","/swagger-ui.html/**").permitAll()
                 // 设置允许访问的资源
                 .antMatchers(
                         "/v2/api-docs",
@@ -65,7 +66,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/**",
                         "/configuration/ui",
                         "/configuration/security",
-                        "/swagger-ui.html/**",
                         "/webjars/**",
                         "/index/**",
                         "/customer/addOrUpdate"
